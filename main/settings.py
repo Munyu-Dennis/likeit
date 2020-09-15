@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-#import django_heroku
+import django_heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,20 +20,21 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '21600acce61fe1252877c9b81e1f8aa1ae4e7998bbb0380f'
+#SECRET_KEY = ""
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['likeit254.herokuapp.com']
+ALLOWED_HOSTS = ['thenetwork254.herokuapp.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'users.apps.UsersConfig',
     'home.apps.HomeConfig',
     'crispy_forms',
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,7 +44,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -120,14 +120,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -139,6 +133,4 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
-#django_heroku.settings(locals())
-#django_heroku.settings(locals())
-
+django_heroku.settings(locals())

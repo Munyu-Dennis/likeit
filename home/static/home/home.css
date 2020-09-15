@@ -1,0 +1,42 @@
+.denoimg {
+    width: 200px;
+}
+
+.denocard {
+    position: center;
+    max-width: inherit;
+    background: #fff;
+    box-shadow: 0 0 10px #000;
+    text-align: center;
+}
+
+.title {
+    color: gray;
+    font-size: 20px;
+}
+
+.btn {
+    width: 100%;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    outline: none;
+    background: rgb(95, 11, 31);
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.social-media {
+    margin-bottom: 20px;
+}
+
+.social-media a {
+    padding: 10px;
+    font-size: 25px;
+    color: rgb(23, 7, 78);
+}
+
+.btn:hover,
+.social-media a:hover {
+    opacity: 0.5;
+}
